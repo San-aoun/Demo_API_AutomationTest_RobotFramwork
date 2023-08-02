@@ -1,0 +1,5 @@
+authentication:
+    username: eve.holt,
+    email: eve.holt@reqres.in,
+    password: cityslicka,
+    incorrect_password: test001,
