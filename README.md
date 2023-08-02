@@ -28,11 +28,11 @@ This is Demo for test API automation test by robot framework with API from open 
                 resources/
                     login.json
             account_mamagement.robot
-        testcases
-            funtional_tests/
-                login.robot
-        testdata/
-            test_data.yaml
+    testcases
+        funtional_tests/
+            login.robot
+    testdata/
+        test_data.yaml
     requirement.txt
 
 
