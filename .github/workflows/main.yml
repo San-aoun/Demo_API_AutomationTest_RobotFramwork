@@ -24,7 +24,13 @@ jobs:
             pip install -r requirement.txt
             pip install django-robots
         - name: run test
-          run: python -m robot -d Results testcases/functional_tests
+          run: python -m robot -d Results testcases/functional_tests   
+        - name: Upload test results
+          uses: actions/upload-artifact@v1
+          if: always()
+          with:
+            name: reports
+            path: reports
     
     generate_report:      
         if: always()
