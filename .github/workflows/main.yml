@@ -24,8 +24,8 @@ jobs:
             pip install -r requirement.txt
             pip install django-robots
         - name: Run Test
-          run: python -m robot -d Results testcases/functional_tests --output reports/outputChrome.xml
-        - name: Set Robot Return Code
+          run: python -m robot --outputdir results testcases/functional_tests
+        - name: Run Robot Framework tests and generate report
           run: |
              echo "ROBOT_RC=$?" >> "$GITHUB_ENV"  
         - name: If Auto Test Pass Rate Not 100%, Job Will Fail
@@ -33,3 +33,8 @@ jobs:
           run: |
             echo "Auto Test Pass Rate Not 100%, Please Check Test Result"
             exit 1
+        - name: Publish test results
+          uses: actions/upload-artifact@v2
+          with:
+            name: robot-test-results
+            path: results
