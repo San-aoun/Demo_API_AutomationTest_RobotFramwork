@@ -48,14 +48,6 @@ jobs:
               robocop --report rules_by_id,rules_by_error_type --ignore keywords/falcon,keywords/qa-common,keywords/qa-magento -i W0301,E0303,E0304,W0306,W0307,W0308,E0311,E0401,E0402,W0509,W0510,W0511,W0512,W0513,W0514,E0515,E0516,E0517,E0518,E0519,E0520,E0521,E0522,E0523,W0524,W0525,E0526,W0601,I0602,W0603,I0606,I0607,E0703,W0704,W0705,E0801,E0802,E0803,W0804,W0805,W0806,W0807,W0808,W0809,E0810,W0901,E0902,W0903,E0907,W0911,W1006,W1007,E1008,W1009 keywords testcases testcases_e2e | tee robocop-full.log;
               echo $'----Robocop Test Result----\n\n' > robocop-summary.log;
               sed -n '/Issues by IDs/,$p' robocop-full.log >> robocop-summary.log
-      
-          - name: comment PR
-            if: github.event_name == 'pull_request'
-            uses: machine-learning-apps/pr-comment@master
-            env:
-              GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-            with:
-              path: robocop-summary.log
               
           - name: upload artifact robocop
             uses: actions/upload-artifact@v2
