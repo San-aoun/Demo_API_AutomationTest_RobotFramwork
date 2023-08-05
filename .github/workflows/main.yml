@@ -23,7 +23,7 @@ jobs:
           if: steps.cache.outputs.cache-hit != 'true'
           run: |
             pip install --upgrade pip
-            pip install -r requirements.txt
+            pip install -r requirement.txt
         - name: comment PR
           if: github.event_name == 'pull_request'
           uses: machine-learning-apps/pr-comment@master
