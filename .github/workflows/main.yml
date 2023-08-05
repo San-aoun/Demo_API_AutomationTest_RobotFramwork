@@ -8,7 +8,7 @@ on:
   workflow_dispatch:
 
 jobs:
-    build:
+    Dry-Run-Test:
       runs-on: ubuntu-20.04
       steps:
         - name: Checkout repository
@@ -25,3 +25,18 @@ jobs:
             pip install django-robots
         - name: run test
           run: python -m robot -d Results testcases/functional_tests
+    
+    generate_report:      
+        if: always()
+        needs: Dry-Run-Test
+        runs-on: ubuntu-latest
+        steps:
+        - uses: actions/checkout@v2
+        - name: Download reports
+          uses: actions/download-artifact@v1
+          with:
+            name: reports
+        - name: Send report to commit
+          uses: joonvena/robotframework-reporter-action@v2.1
+          with:
+            gh_access_token: ${{ secrets.GITHUB_TOKEN }}
