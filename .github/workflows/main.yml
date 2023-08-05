@@ -36,8 +36,8 @@ jobs:
         - name: Publish test results
           uses: actions/upload-artifact@v2
           with:
-            name: robot-test-results
-            path: results
+            name: reports
+            path: reports
             
     Generate_report:
       if: always()
@@ -49,3 +49,6 @@ jobs:
           uses: actions/download-artifact@v1
           with:
             name: reports
+        - name: Send report to commit
+          with:
+            gh_access_token: ${{ secrets.GITHUB_TOKEN }}
