@@ -18,3 +18,9 @@ Customer login
     REST.Integer    response status    200
     ${response}=    REST.Output    response body
     [Return]    ${response}
+
+Get user Data
+
+Delete user Data
+
+Update user Data

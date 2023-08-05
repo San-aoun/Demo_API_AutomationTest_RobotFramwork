@@ -14,7 +14,6 @@ This is Demo for test API automation test by robot framework with API from open 
 ### Architecture
 
 /framework:
-
     imports/
         api_import.robot
         library.robot
