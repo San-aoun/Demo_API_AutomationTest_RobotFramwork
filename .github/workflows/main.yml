@@ -24,10 +24,5 @@ jobs:
           run: |
             pip install --upgrade pip
             pip install -r requirement.txt
-        - name: comment PR
-          if: github.event_name == 'pull_request'
-          uses: machine-learning-apps/pr-comment@master
-          env:
-            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          with:
-            path: robocop-summary.log
+        - name: run test
+          run: python -m robot -d Results testcases/functional_tests
