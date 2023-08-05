@@ -36,8 +36,8 @@ jobs:
         - name: Publish test results
           uses: actions/upload-artifact@v2
           with:
-            name: reports
-            path: reports
+            name: robot-test-results
+            path: results
             
     Generate_report:
       if: always()
@@ -45,10 +45,10 @@ jobs:
       runs-on: ubuntu-latest
       steps:
         - uses: actions/checkout@v2
-        - name: Download reports
+        - name: Download robot-test-results
           uses: actions/download-artifact@v1
           with:
-            name: reports
-        - name: Send report to commit
+            name: robot-test-results
+        - name: Send robot-test-results to commit
           with:
             gh_access_token: ${{ secrets.GITHUB_TOKEN }}
