@@ -8,7 +8,7 @@ on:
   workflow_dispatch:
 
 jobs:
-    Dry-Run-Test:
+    Run-Test:
       runs-on: ubuntu-20.04
       steps:
         - name: Checkout repository
@@ -23,28 +23,13 @@ jobs:
             pip install --upgrade pip
             pip install -r requirement.txt
             pip install django-robots
-        - name: run test
+        - name: Run Test
           run: python -m robot -d Results testcases/functional_tests
-        - name: Execute tests
-          uses: joonvena/robotframework-docker-action@v1.0
-        - name: Upload test results
-          uses: actions/upload-artifact@v1
-          if: always()
-          with:
-            name: reports
-            path: reports
-    
-    generate_report:      
-        if: always()
-        needs: Dry-Run-Test
-        runs-on: ubuntu-latest
-        steps:
-        - uses: actions/checkout@v2
-        - name: Download reports
-          uses: actions/download-artifact@v1
-          with:
-            name: reports
-        - name: Send report to commit
-          uses: joonvena/robotframework-reporter-action@v2.1
-          with:
-            gh_access_token: ${{ secrets.GITHUB_TOKEN }}
+        - name: Set Robot Return Code
+          run: |
+             echo "ROBOT_RC=$?" >> "$GITHUB_ENV"  
+        - name: If Auto Test Pass Rate Not 100%, Job Will Fail
+          if: env.ROBOT_RC != '0'
+          run: |
+            echo "Auto Test Pass Rate Not 100%, Please Check Test Result"
+            exit 1
