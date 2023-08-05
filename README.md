@@ -11,6 +11,7 @@ This is Demo for test API automation test by robot framework with API from open 
 
 4. Install libraries that required to run automation code with command " pip install -r requirements.txt "
 
+5. The comman for Test Execution: python -m robot -i "demo" -d Results testcases/functional_tests
 ### Architecture
 
 /framework:
@@ -26,11 +27,11 @@ This is Demo for test API automation test by robot framework with API from open 
                 resources/
                     login.json
             account_mamagement.robot
-        testcases
-            funtional_tests/
-                login.robot
-        testdata/
-            test_data.yaml
+    testcases
+        funtional_tests/
+            login.robot
+    testdata/
+        test_data.yaml
     requirement.txt
 
 
