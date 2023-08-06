@@ -47,8 +47,8 @@ jobs:
             trcli -y \
               -h https://piyathida.testrail.io \
               --project "API_Test" \
-              --username Piyathida.sanaoun01@gmail.com \
-              --password Zxcv@121416 \
+              --username "Piyathida.sanaoun01@gmail.com" \
+              --password "Zxcv@121416" \
               parse_junit \
               --title "Robot Framework Automated Tests" \
-              -f junit-report.xml
+              -f "junit-report.xml"
