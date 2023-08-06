@@ -52,4 +52,3 @@ jobs:
               parse_junit \
               --title "Robot Framework Automated Tests" \
               -f junit-report.xml
-              --run-description ${{github.server_url}}/${{github.repository}}/action/runs/${{github.run_id}}
