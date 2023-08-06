@@ -39,17 +39,17 @@ jobs:
             name: robot-test-results
             path: results
         - name: Execute TestRail CLI to upload results
-            if: always()
-            run: |
-              pip install trcli 
-              trcli -y \
-                -h https://piyathida.testrail.io \
-                --project "API_Test" \
-                --username Piyathida.sanaoun01@gmail.com \
-                --password Zxcv@121416 \
-                parse_junit \
-                --title "Robot Framework Automated Tests" \
-                -f junit-report.xml
-                --run-description ${{github.server_url}}/${{github.repository}}/action/runs/${{github.run_id}}
+          if: always()
+          run: |
+            pip install trcli 
+            trcli -y \
+              -h https://piyathida.testrail.io \
+              --project "API_Test" \
+              --username Piyathida.sanaoun01@gmail.com \
+              --password Zxcv@121416 \
+              parse_junit \
+              --title "Robot Framework Automated Tests" \
+              -f junit-report.xml
+              --run-description ${{github.server_url}}/${{github.repository}}/action/runs/${{github.run_id}}
 
 
