@@ -20,7 +20,6 @@ Customer login
 
 Get user Data
         [Arguments]    ${userId}
-        ${guest_token}=    Set Variable    ${guest_token}
         ${response}=    REST.Get   endpoint=https://reqres.in//api/unknown/${userId}
         ${response}=    REST.Output    response body
         [Return]    ${response}

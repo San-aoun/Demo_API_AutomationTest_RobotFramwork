@@ -24,3 +24,4 @@ robotframework-imaplibrary2==0.4.0
 html2text==2020.1.16
 robotframework-browsermobproxylibrary==0.1.3
 robotframework-csvlibrary
+robotframework-testrail

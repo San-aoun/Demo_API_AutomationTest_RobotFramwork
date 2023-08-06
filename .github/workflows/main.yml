@@ -25,6 +25,8 @@ jobs:
             pip install django-robots
         - name: Run Test
           run: python -m robot --outputdir results testcases/functional_tests
+        - name: Run Test and create report
+          run: python -m robot -d reports -x junit-report.xml "testcases/functional_tests"
         - name: Run Robot Framework tests and generate report
           run: |
              echo "ROBOT_RC=$?" >> "$GITHUB_ENV"  
@@ -38,4 +40,21 @@ jobs:
           with:
             name: robot-test-results
             path: results
+        - name: Excecute TestRail CLI to upload results
+            if: always()
+            run: |
+              pip install trcli 
+              trcli -y \
+                -h https://piyathida.testrail.io \
+                --project "API_Test" \
+                --username Piyathida.sanaoun01@gmail.com \
+                --password Zxcv@121416 \
+                parse_junit \
+                --title "Robot Framework Automated Tests" \
+                -f junit-report.xml
+                --run-description ${{github.server_url}}/${{github.repository}}/action/runs/${{github.run_id}}
+
+
+
+
 
