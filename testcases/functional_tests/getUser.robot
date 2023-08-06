@@ -2,7 +2,15 @@
 Resource    ${CURDIR}/../../imports/api_imports.robot
 
 *** Test Cases ***
-Verify that can get user
-    [Tags]    demo    regression
-    Set Test Variable    ${email}    ${authentication.email}
-    Set Test Variable    ${password}    ${authentication.incorrect_password}
+Get user - Validate user Id
+    [Tags]    demo    getuser
+    Set Test Variable    ${id}    ${userdata.userId}
+    Set Test Variable    ${email}    ${userdata.email}
+    Set Test Variable    ${firstname}    ${userdata.firstname}
+    Set Test Variable    ${firstname}    ${userdata.firstname}
+    getSingleUser.Verify get single user then can get user with 200 OK    ${email}    ${password}
+
+Get user - Invalidate user Id
+    [Tags]    demo    getuser
+    Set Test Variable    ${id}    ${userdata.userId}
+    getSingleUser.Verify get emtry user then response single user 404 not found    ${id}
