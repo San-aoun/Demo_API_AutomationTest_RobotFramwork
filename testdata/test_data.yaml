@@ -1,21 +1,17 @@
 authentication:
-    userId: 2
     username: eve.holt,
     email: eve.holt@reqres.in,
     password: cityslicka,
-    incorrect_password: test001,
 
-register:
-    email: eve.holt@reqres.in,
-    password: pistol,
+userdata:
+    userId: 2,
+    email: janet.weaver@reqres.in,
+    first_name: Janet,
+    last_name: Weaver,
 
-createUser:
-    name: Jane,
-    job: qa engineer
-
-updateUser:
-    name: Jane
-    job: qa automation engineer
+updatedata:
+    name: morpheus
+    job: zion resident
 
 
 

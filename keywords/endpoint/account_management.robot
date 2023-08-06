@@ -1,7 +1,6 @@
 *** Settings ***
 Library      REST
 
-
 *** Keywords ***
 Customer login
     [Documentation]    `is_jwt=true` will use with frontend only can't use on falcon api \n
@@ -20,7 +19,16 @@ Customer login
     [Return]    ${response}
 
 Get user Data
-
-Delete user Data
+        [Arguments]    ${userId}
+        ${response}=    REST.Get   endpoint=https://reqres.in//api/unknown/${userId}
+        ${response}=    REST.Output    response body
+        [Return]    ${response}
 
 Update user Data
+    [Arguments]    ${userId}    ${name}    ${job}
+    ${request}=    Get Templated Data From Path    ${CURDIR}/account_managment/resources/updateUser.json    return_type=json
+    ${body}=    Evaluate    json.dumps($request)    json
+    ${response}=    REST.Update   endpoint=https://reqres.in/api/users/${userId}    body=${body}
+    ${response_status}=  REST.Integer    response status
+    ${response}=    REST.Output    response body
+    [Return]    ${response}    ${response_status}

@@ -2,7 +2,9 @@
 Resource    ${CURDIR}/../../imports/api_imports.robot
 
 *** Test Cases ***
-Verify that can update user
-    [Tags]    demo    regression
-    Set Test Variable    ${email}    ${authentication.email}
-    Set Test Variable    ${password}    ${authentication.incorrect_password}
+Update User - Valid User ID
+    [Tags]    demo    updateUser
+    Set Test Variable    ${name}    ${updatedata.name}
+    Set Test Variable    ${job}    ${updatedata.job}
+    Set Test Variable    ${id}    ${userdata.userId}
+    # updateUser.Verify update user then can update user with 201 created    ${id}   ${name}    ${job}
