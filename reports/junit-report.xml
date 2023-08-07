@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Functional Tests" tests="4" errors="0" failures="1" skipped="0" time="0.621">
+<testcase classname="Functional Tests.getUser" name="Get user - Validate user Id" time="0.011">
+</testcase>
+<testcase classname="Functional Tests.getUser" name="Get user - Invalidate user Id" time="0.003">
+</testcase>
+<testcase classname="Functional Tests.Login" name="Verify that users cann't login when email or password are incorrect via api" time="0.005">
+<failure message="Resolving variable '${authentication.incorrect_password}' failed: AttributeError: incorrect_password" type="AssertionError"/>
+</testcase>
+<testcase classname="Functional Tests.updateUser" name="Update User - Valid User ID" time="0.010">
+</testcase>
+</testsuite>

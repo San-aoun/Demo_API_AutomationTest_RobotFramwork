@@ -2,6 +2,7 @@ authentication:
     username: eve.holt,
     email: eve.holt@reqres.in,
     password: cityslicka,
+    incorrect_password: test123,
 
 userdata:
     userId: 2,
@@ -10,8 +11,8 @@ userdata:
     last_name: Weaver,
 
 updatedata:
-    name: morpheus
-    job: zion resident
+    name: morpheus,
+    job: zion resident,
 
 
 
