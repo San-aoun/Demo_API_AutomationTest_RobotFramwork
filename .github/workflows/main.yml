@@ -49,7 +49,6 @@ jobs:
           if: always()
           run: |
             pip install trcli 
-            junitparser merge --glob "reports/junit-report.xml"
             trcli -y \
               -h "https://piyathida.testrail.io" \
               --project "API_Test" \
