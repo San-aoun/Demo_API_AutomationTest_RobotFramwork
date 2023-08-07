@@ -44,10 +44,6 @@ jobs:
           if: always()
           run: |
             pip install trcli 
-            pip uninstall black
-            pip uninstall click
-            pip install black
-            pip install click
             trcli -y \
               -h "https://piyathida.testrail.io" \
               --project "API_Test" \
