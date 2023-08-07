@@ -14,21 +14,29 @@ Customer login
     ${request}=    Get Templated Data From Path    ${CURDIR}/account_managment/resources/login.json    return_type=json
     ${body}=    Evaluate    json.dumps($request)    json
     ${response}=    REST.Post   endpoint=https://reqres.in/api/login    body=${body}
-    REST.Integer    response status    200
     ${response}=    REST.Output    response body
     [Return]    ${response}
 
+Get user Data invalid
+        [Arguments]    ${userId}
+        ${response}=    REST.Get   endpoint=https://reqres.in/api/unknown/${userId}
+        ${response_status}=    JSONLibrary.Get Value From Json    ${response}    $..reason
+        [Return]    ${response_status}[0]
+
 Get user Data
         [Arguments]    ${userId}
-        ${response}=    REST.Get   endpoint=https://reqres.in//api/unknown/${userId}
-        ${response}=    REST.Output    response body
-        [Return]    ${response}
+        ${response}=    REST.Get   endpoint=https://reqres.in/api/2
+        REST.Integer    response status    200
+        ${response_data}=    JSONLibrary.Get Value From Json    ${response}    $..data[0].name
+        [Return]    ${response_data}[0]
 
 Update user Data
     [Arguments]    ${userId}    ${name}    ${job}
     ${request}=    Get Templated Data From Path    ${CURDIR}/account_managment/resources/updateUser.json    return_type=json
     ${body}=    Evaluate    json.dumps($request)    json
-    ${response}=    REST.Update   endpoint=https://reqres.in/api/users/${userId}    body=${body}
-    ${response_status}=  REST.Integer    response status
-    ${response}=    REST.Output    response body
-    [Return]    ${response}    ${response_status}
+    ${response}=    REST.Put   endpoint=https://reqres.in/api/users/${userId}    body=${body}
+    REST.Integer    response status    200
+    # ${response}=    REST.Output    response body
+    # ${response_json}=    Evaluate    json.dumps($response)    json
+    ${response_status}=    JSONLibrary.Get Value From Json    ${response}    $..reason
+    [Return]    ${response_status}[0]
