@@ -56,4 +56,3 @@ jobs:
               --password "Zxcv@121416" \
               parse_junit \
               --title "Robot Framework Automated Tests" \
-              -f "junit-report.xml"
