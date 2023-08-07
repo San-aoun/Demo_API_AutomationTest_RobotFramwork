@@ -40,10 +40,16 @@ jobs:
           with:
             name: robot-test-results
             path: results
-        - name: Excecute TestRail CLI to upload results
+        - name: Setup Python
+          if: always()
+          uses: actions/setup-python@4.5.0
+          with:
+            python-version: '3.x'
+        - name: Execute TestRail CLI to upload results
           if: always()
           run: |
             pip install trcli 
+            junitparser merge --glob "reports/junit-report.xml"
             trcli -y \
               -h "https://piyathida.testrail.io" \
               --project "API_Test" \
