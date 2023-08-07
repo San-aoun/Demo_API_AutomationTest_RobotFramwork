@@ -49,7 +49,7 @@ jobs:
             pip install black
             pip install click
             trcli -y \
-              -h https://piyathida.testrail.io \
+              -h "https://piyathida.testrail.io" \
               --project "API_Test" \
               --username "Piyathida.sanaoun01@gmail.com" \
               --password "Zxcv@121416" \
